@@ -1,0 +1,32 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+</head>
+
+<body>  
+  <h1>Chatapp</h1>
+  {{> welcome }}
+  {{> input }}
+  {{> messages }}
+</body>
+
+<template name="welcome">
+  <p>
+    Let's chat.
+  </p>
+</template>
+
+<template name="messages">
+  {{#each messages}}
+    <strong>{{name}}:</strong> {{message}}<br>
+  {{/each}}
+</template>
+
+<template name="input">
+	<p>Name: <input type="text" id="name"></p>
+  <p>Message: <input type="text" id="message"></p>
+  <button  type="submit" id="submit">Submit</button>
+  <br>
+
+</template>
