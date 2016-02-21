@@ -98,7 +98,7 @@ _In the client folder:_
 
 ###_client_.js
 
-    if (Meteor.isClient) {    // is this a helper if nested in if statement? Yes
+    if (Meteor.isClient) {    
       Template.messages.helpers({
         messages: function() {
          return Messages.find({}, { sort: { time: -1}});
@@ -106,25 +106,25 @@ _In the client folder:_
       });
 
       // this template for the input tag and submit button. 
-      Template.input.events = {       //is event handler?
+      Template.input.events = {       // (is event handler?)
          'click #submit' : function (event) {  // click on element with ‘submit’ id
-            var name = document.getElementById('name');   //define element with ‘name’ id as name var
+            var name = document.getElementById('name');   // define element with ‘name’ id as name var
             // var name = 'Anonymous';
-            var message = document.getElementById('message'); //define element with ‘message’ id as var message
+            var message = document.getElementById('message'); // define element with ‘message’ id as var message
 
-          //If the value of the message is not empty then insert the values into DB
+          // If the value of the message is not empty then insert the values into DB
           if (message.value != '') {  // if message value is not empty
-            Messages.insert({  // insert into Message as
-              name: name.value,  // name = value for name
+            Messages.insert({   // insert into Message as
+              name: name.value,   // name = value for name
               message: message.value,  // message = value for message
               time: Date.now(),  // time = value for time
             });
 
-            //clears out input fields
+            // clears out input fields
             document.getElementById('message').value = '';  
-            message.value = '';   //define element with ‘message’ id as ‘ ‘
+            message.value = '';    // define element with ‘message’ id as ‘ ‘
             document.getElementById('name').value = '';
-            name.value = ''; //define element with ‘name’ id as ‘ ‘
+            name.value = '';  // define element with ‘name’ id as ‘ ‘
           }
         }
       }
