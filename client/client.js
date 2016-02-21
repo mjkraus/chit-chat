@@ -26,7 +26,6 @@ if (Meteor.isClient) {
       
         },
         formattedTime: function() {
-            console.log(this.time)
             return moment(this.time).startOf(this.time).fromNow();
 
         }
