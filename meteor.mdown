@@ -62,7 +62,7 @@
 
 3. For added functionality, can add packages provided by meteor. E.g,
 
-    `cd into app_name`
+    `cd app_name`
 
 * Fonts:
 
