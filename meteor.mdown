@@ -93,12 +93,12 @@ _In the client folder:_
 
 ###_model_.js
 
-    `Messages = new Mongo.Collection('messages');`
+    Messages = new Mongo.Collection('messages');
 
 
 ###_client_.js
 
-    `if (Meteor.isClient) {    // is this a helper if nested in if statement? Yes
+    if (Meteor.isClient) {    // is this a helper if nested in if statement? Yes
       Template.messages.helpers({
         messages: function() {
          return Messages.find({}, { sort: { time: -1}});
@@ -128,11 +128,11 @@ _In the client folder:_
           }
         }
       }
-      }`
+      }
 
 ###_client_.html
 
-    `<!-- There is no need for HTML tags. Meteor adds them for you.  -->
+    <!-- There is no need for HTML tags. Meteor adds them for you.  -->
     <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -166,15 +166,15 @@ _In the client folder:_
       <button  type="submit" id="submit">Submit</button>
       <br>
 
-    </template>`
+    </template>
 
 ###_client_.css
 
-    `html {
+    html {
       padding: 10px;
       font-family: Verdana, sans-serif;
     }
 
     .login-buttons-dropdown-align-right {
       float: right;
-    }`
+    }
