@@ -178,4 +178,3 @@ _In the client folder:_
     .login-buttons-dropdown-align-right {
       float: right;
     }`
-
