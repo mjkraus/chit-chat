@@ -24,6 +24,11 @@ if (Meteor.isClient) {
             // changing -1 to 1 reverses the order and you dont have to refresh!
             // meteor is real time by default!
       
+        },
+        formattedTime: function() {
+            console.log(this.time)
+            return moment(this.time).startOf(this.time).fromNow();
+
         }
 
 
@@ -52,7 +57,7 @@ Template.input.events = {
         Messages.insert({
           name: name.value,
           message: message.value,
-          time: Date.now(),
+          time: new Date(),
         });
 
 //resets the values in the input fields
