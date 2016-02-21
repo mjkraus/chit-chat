@@ -1,10 +1,11 @@
 ![meteor logo](https://cloud.githubusercontent.com/assets/15331966/13201426/fa4f14bc-d83e-11e5-905d-71eb3aa2f714.png)
 
 #SO WHAT IS IT?
-##Meteor is a Javascript platform/framework.
-###Like all frameworks, Meteor is specially configured with certain attributes that make it ideal for use under certain conditions. 
+> _"Meteor is to Javascript as Rails is to Ruby"_
+##Meteor is a Javascript platform.
+###Like all platforms, Meteor is specially configured with attributes that make it ideal to use under certain conditions. 
 ###Meteor’s special attribute is its built-in reactiveness/live update functionality.
-###What this means is that meteor is useful for apps requiring live, dynamic data updates, in which data changes show on the page in real time.
+###What this means is that meteor is useful for apps requiring real time data updates, as with messaging apps, collaborative editing aps, two player online games, etc.
 ##Some other features:
 * Uses JavaScript for front-end, back-end, and database implementation
 * Has own templating system to display data on the page
@@ -20,7 +21,7 @@
 
 2. In terminal, create meteor app
 
-    `meteor create app_name`
+    `meteor create _appname_`
 
     * This will create a directory called app_name, with starter files to be built out. E.g.,
         * _appname_.js
@@ -56,7 +57,7 @@
 
         * Folders
             * /client – for code running on client
-            * /server – for code running on server, like data authorization, external services?
+            * /server – for code running on server, like data authorization, external services
             * /public – for resources used by/on the client, like images, fonts
             * /private – for resources that should be unavailable to the client, like configuration, etc.
 
@@ -89,92 +90,249 @@
     `meteor add accounts-twitter`
 
 ##How chit-chat works
-_In the client folder:_
+
+###Run the app
+
+     `meteor`
 
 ###_model_.js
 
     Messages = new Mongo.Collection('messages');
 
+###The HTML
 
-###_client_.js
+![chit-chat](https://cloud.githubusercontent.com/assets/15331966/13205095/6528c558-d8ad-11e5-993f-8888adad8c8e.png)
 
-    if (Meteor.isClient) {    
-      Template.messages.helpers({
-        messages: function() {
-         return Messages.find({}, { sort: { time: -1}});
-         }
-      });
-
-      // this template for the input tag and submit button. 
-      Template.input.events = {       // (is event handler?)
-         'click #submit' : function (event) {  // click on element with ‘submit’ id
-            var name = document.getElementById('name');   // define element with ‘name’ id as name var
-            // var name = 'Anonymous';
-            var message = document.getElementById('message'); // define element with ‘message’ id as var message
-
-          // If the value of the message is not empty then insert the values into DB
-          if (message.value != '') {  // if message value is not empty
-            Messages.insert({   // insert into Message as
-              name: name.value,   // name = value for name
-              message: message.value,  // message = value for message
-              time: Date.now(),  // time = value for time
-            });
-
-            // clears out input fields
-            document.getElementById('message').value = '';  
-            message.value = '';    // define element with ‘message’ id as ‘ ‘
-            document.getElementById('name').value = '';
-            name.value = '';  // define element with ‘name’ id as ‘ ‘
-          }
-        }
-      }
-      }
-
-###_client_.html
 
     <!-- There is no need for HTML tags. Meteor adds them for you.  -->
     <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title></title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
     </head>
 
-    <!-- placeholders for the templates with the coordinating names -->
+    <!-- The body of the app, with placeholders for the templates and coordinating names -->
     <body>  
-      <h1>Chatapp</h1>
-        {{> welcome }}
-        {{> input }}
-        {{> messages }}
+      <h1>Chit-Chat</h1>
+      {{> welcome }}
+      {{> input }}
+      {{> messages }}
     </body>
 
-    <!-- templates can be saved in html files with the same name as the template tag -->
-    <template name="welcome"> #defining how to display welcome message.
-      <p>
-        Let's chat.
-      </p>
+    <!-- Templates. They can be saved in html files with the same name as the template tag -->
+    <template name="welcome">
+      <div class="welcome">
+        <p>
+          Let's chit-chat.
+        </p>
+      </div>
     </template>
 
-    <template name="messages"> #defining how to display messages
-      {{#each messages}}  #using each loop to apply display format to each message.
-        <strong>{{name}}:</strong> {{message}}<br>
-      {{/each}}
+    <template name="messages">
+      <div class="data">
+        {{#each messages}}
+          <strong>{{name}}:</strong> {{message}} <br>
+        {{/each}}
+      </div>
     </template>
 
-    <template name="input"> #defining how to display input form.
-      <p>Name: <input type="text" id="name"></p>
-      <p>Message: <input type="text" id="message"></p>
-      <button  type="submit" id="submit">Submit</button>
-      <br>
-
+    <template name="input">
+      <div class="input">
+        <p>Name: <input type="text" id="name"></p>
+        <p>Message: <input type="text" id="message"></p>
+        <button  type="submit" id="submit">Submit</button>
+        <br>
+      </div>
     </template>
 
-###_client_.css
+
+###Enter name and message, insert into db
+
+![enter name & message](https://cloud.githubusercontent.com/assets/15331966/13205099/70d1c864-d8ad-11e5-8857-159eb4963656.png)
+
+_The JS_
+
+    // Event handler for input tag and submit button. 
+    Template.input.events = {
+       // jquery equiv:
+       // $('#submit').on('click', function(){
+       // var name = $('#name').val();
+       // var message = $('#message').val();
+       // })
+       'click #submit' : function (event) {
+          var name = document.getElementById('name');
+          // var name = 'Anonymous';
+          var message = document.getElementById('message');
+
+    //If the value of the message is not empty then insert the values into DB
+          if (message.value != '') {
+            Messages.insert({
+              name: name.value,
+              message: message.value,
+              time: Date.now(),
+            });
+
+_The HTML_
+
+    <template name="input">
+      <div class="input">
+        <p>Name: <input type="text" id="name"></p>
+        <p>Message: <input type="text" id="message"></p>
+        <button  type="submit" id="submit">Submit</button>
+        <br>
+      </div>
+    </template>
+
+###Clear out fields, print message in real time
+
+![enter name & message](https://cloud.githubusercontent.com/assets/15331966/13205100/78556802-d8ad-11e5-9f92-300ebdc9f84d.png)
+
+_The JS_
+
+    //resets the values in the input fields
+            document.getElementById('message').value = '';
+            message.value = '';
+            document.getElementById('name').value = '';
+            name.value = '';
+          }
+        
+      }
+    }
+    }
+        Template.messages.helpers({
+            messages: function() {
+                return Messages.find({}, { sort: { time: -1}});
+                // the -1 sorts it in desc order
+                // changing -1 to 1 reverses the order and you dont have to refresh!
+                // meteor is real time by default!
+          
+            }
+
+_The HTML_
+
+
+    <template name="messages">
+      <div class="data">
+        {{#each messages}}
+          <strong>{{name}}:</strong> {{message}} <br>
+        {{/each}}
+      </div>
+    </template>
+
+
+###The Javascript
+
+    /**
+    * Templates
+    */
+
+    // the client and server logic is divided by .isClient and .isServer. It is often organized by 
+    // dividing the logic into different folders.
+    // Need to explore the below if statement more to know what it is doing. 
+    // I think it is sorting the messages from the DB based on the timestamp. This is how they are displayed
+    // in our view
+
+    if (Meteor.isClient) {
+        // this is a 'local' helper
+        // in a global helper, you would not need to name the template, i guess
+        // rails equiv of below:
+        // @messages.order(time: :desc).each do |m|
+        // <p><%=m.name%></p> <p><%=m.message%></p>
+        // end
+
+        Template.messages.helpers({
+            messages: function() {
+                return Messages.find({}, { sort: { time: -1}});
+                // the -1 sorts it in desc order
+                // changing -1 to 1 reverses the order and you dont have to refresh!
+                // meteor is real time by default!
+          
+            }
+
+
+        });
+
+    // Event handler for input tag and submit button. 
+    Template.input.events = {
+       // jquery equiv:
+       // $('#submit').on('click', function(){
+       // var name = $('#name').val();
+       // var message = $('#message').val();
+       // })
+       'click #submit' : function (event) {
+          var name = document.getElementById('name');
+          // var name = 'Anonymous';
+          var message = document.getElementById('message');
+
+    //If the value of the message is not empty then insert the values into DB
+          if (message.value != '') {
+            Messages.insert({
+              name: name.value,
+              message: message.value,
+              time: Date.now(),
+            });
+
+    //resets the values in the input fields
+            document.getElementById('message').value = '';
+            message.value = '';
+            document.getElementById('name').value = '';
+            name.value = '';
+          }
+        
+      }
+    }
+    }
+
+###Some CSS
 
     html {
-      padding: 10px;
-      font-family: Verdana, sans-serif;
+        padding: 10px;
+        font-family: Verdana, sans-serif;
     }
 
     .login-buttons-dropdown-align-right {
-      float: right;
+        float: right;
     }
+
+    h1 {
+      text-align: center;
+      margin: 0 auto;
+      border-bottom: 2px solid black;
+
+    }
+
+    .welcome {
+      text-align: center;
+      padding: 10px;
+      margin: 10px 30% 20px 30%;
+      border: 1px solid black;
+      border-radius: 10px;
+      background: linear-gradient(#6a3093, #a044ff);
+      color: white;
+      box-shadow: -8px 10px 32px 1px rgba(8,8,8,1);;
+
+    }
+
+    .data {
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      margin: 10px 30% 20px 30%;
+      border: 1px solid black;
+      background: linear-gradient(#6a3093, #a044ff);
+      color: white;
+      box-shadow: -8px 10px 32px 1px rgba(8,8,8,1);
+    }
+
+    .input {
+      border-radius: 10px;
+
+      margin: 10px 30% 20px 30%;
+      border: 1px solid black;
+      padding: 10px;
+      background: linear-gradient(#6a3093, #a044ff);
+      color: white;
+      box-shadow: -8px 10px 32px 1px rgba(8,8,8,1);
+    }
+
+
