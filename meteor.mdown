@@ -1,7 +1,7 @@
 ![meteor logo](https://cloud.githubusercontent.com/assets/15331966/13201426/fa4f14bc-d83e-11e5-905d-71eb3aa2f714.png)
 
 #SO WHAT IS IT?
-> _"Meteor is to Javascript as Rails is to Ruby"_
+> _"Meteor is to Javascript as Rails is to Ruby."_
 
 ##Meteor is a Javascript platform.
 ###Like all platforms, Meteor is specially configured with attributes that make it ideal to use under certain conditions. 
@@ -102,7 +102,7 @@
 
 ###The HTML
 
-![chit-chat](https://cloud.githubusercontent.com/assets/15331966/13205095/6528c558-d8ad-11e5-993f-8888adad8c8e.png)
+![chit-chat](https://cloud.githubusercontent.com/assets/15331966/13205327/e96f7b3a-d8b3-11e5-9838-d211259c47ea.png)
 
 
     <!-- There is no need for HTML tags. Meteor adds them for you.  -->
@@ -229,8 +229,7 @@ _HTML_
 
     // the client and server logic is divided by .isClient and .isServer. It is often organized by 
     // dividing the logic into different folders.
-    // Need to explore the below if statement more to know what it is doing. 
-    // I think it is sorting the messages from the DB based on the timestamp. This is how they are displayed
+    // It is sorting the messages from the DB based on the timestamp. This is how they are displayed
     // in our view
 
     if (Meteor.isClient) {
