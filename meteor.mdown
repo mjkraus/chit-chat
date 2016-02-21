@@ -22,9 +22,9 @@
 
 2. In terminal, create meteor app
 
-    `meteor create _appname_`
+    `meteor create appname`
 
-    * This will create a directory called app_name, with starter files to be built out. E.g.,
+    * This will create a directory called _appname_, with starter files to be built out. E.g.,
         * _appname_.js
             * JavaScript file loaded on both client and server
             * Javascript files contain data models/db, functions, data calls and other manipulators, and event handlers
@@ -64,7 +64,7 @@
 
 3. For added functionality, can add packages provided by meteor. E.g,
 
-    `cd app_name`
+    `cd appname`
 
 * Fonts:
 
