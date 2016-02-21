@@ -150,7 +150,7 @@
 
 ![enter name & message](https://cloud.githubusercontent.com/assets/15331966/13205392/08861546-d8b5-11e5-9aa3-05a606619c8a.png)
 
-_JS_
+_Client.JS_
 
     // Event handler for input tag and submit button. 
     Template.input.events = {
@@ -172,7 +172,7 @@ _JS_
               time: Date.now(),
             });
 
-_HTML_
+_Client.HTML_
 
     <template name="input">
       <div class="input">
@@ -187,7 +187,7 @@ _HTML_
 
 ![enter name & message](https://cloud.githubusercontent.com/assets/15331966/13205394/12a0fcee-d8b5-11e5-8646-43b96b51d1dd.png)
 
-_JS_
+_Client.JS_
 
     //resets the values in the input fields
             document.getElementById('message').value = '';
@@ -208,7 +208,7 @@ _JS_
           
             }
 
-_HTML_
+_Client.HTML_
 
 
     <template name="messages">
