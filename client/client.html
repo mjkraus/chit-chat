@@ -16,21 +16,26 @@
 
 <!-- templates can be saved in html files with the same name as the template tag -->
 <template name="welcome">
-  <p>
-    Let's chat.
-  </p>
+  <div class="welcome">
+    <p>
+      Let's chat.
+    </p>
+  </div>
 </template>
 
 <template name="messages">
-  {{#each messages}}
-    <strong>{{name}}:</strong> {{message}}<br>
-  {{/each}}
+  <div class="data">
+    {{#each messages}}
+      <strong>{{name}}:</strong> {{message}}<br>
+    {{/each}}
+  </div>
 </template>
 
 <template name="input">
-	<p>Name: <input type="text" id="name"></p>
-  <p>Message: <input type="text" id="message"></p>
-  <button  type="submit" id="submit">Submit</button>
-  <br>
-
+  <div class="input">
+  	<p>Name: <input type="text" id="name"></p>
+    <p>Message: <input type="text" id="message"></p>
+    <button  type="submit" id="submit">Submit</button>
+    <br>
+  </div>
 </template>
