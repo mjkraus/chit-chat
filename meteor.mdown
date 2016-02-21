@@ -1,0 +1,147 @@
+![meteor logo](https://cloud.githubusercontent.com/assets/15331966/13200943/e3ef3044-d82a-11e5-8a5e-34038bee257e.png)
+
+#WHAT IT IS
+##Meteor is a Javascript platform/framework.
+###Like all frameworks, Meteor is specially configured with certain attributes that make it ideal for use under certain conditions. 
+###Meteor’s special attribute is the reactiveness/live update functionality it has built in.
+###What this means is that meteor is useful for apps requiring live, dynamic data updates, in which data additions or changes show on the page in real time.
+##Some other features:
+* Uses JavaScript for frontend, back-end, and database implementation
+* Has own templating system to display data on the page
+* Uses javascript-based Node.js (which is javascript based) to create server and networking tool and handle server-side functionality.
+* Uses MongoDB as database software, which plugs data into json-like collections instead of a relational db. The persistent data
+    * can be accessed from both the server and the client, making it easy to write view logic without having to write a lot of server code.
+    * update themselves automatically, so a view component backed by a collection will automatically display the most up-to-date data
+##Creating a meteor app
+1. In terminal, install meteor
+
+    `curl https://install.meteor.com/ | sh`
+
+2. In terminal, create meteor app
+
+    `meteor create app_name`
+
+    * This will create a directory called app_name, will starter files to be built out. E.g.,
+        * _appname_.js
+                * JavaScript file loaded on both client and server
+                * Javascript files contain data models/db, functions, data calls and other manipulators, and event handlers
+        * _appname_.html
+                * html files are comprised of 3 top level tags: <head>, <body>, and <template>
+                * <head> includes normal head elements title for the document, scripts, styles, meta information
+                * <body> contains page contents. Displays data by referencing templates, as well as functions and event handlers defined elsewhere.
+                        * Templates are referenced using {{> templatename}}
+                        * Functions are referenced using {{funcitonname}}
+                        * Event handlers are not referenced but obeyed
+                * <template> contains instructions for handling, parsing data. E.g,
+                        * How to display a kind of data, like what kind tags to enclose them in.
+                        * When to display data using {{#if…}}{{/if}} and/or {{#unless…}}{{/unless}} conditionals
+                        * How to loop through data using {{#ieach…}}{{/each}} loops
+        * _appname_.css       # a CSS file to define your app's styles
+        * .meteor                 # internal Meteor files
+        * Folders
+                * /client – for code running on client
+                * /server – for code running on server, like data authorization, external services?
+                * /public – for resources used by/on the client, like images, fonts
+                * /private – for resources that should be unavailable to the client, like configuration, etc.
+3. For added functionality, can add packages provided by meteor. E.g,
+
+                `cd into app_name`
+
+                meteor add udondan:googlefonts  ⇒ fonts
+                meteor add fourseven:scss ⇒ scss
+                meteor add mrt:moment ⇒ format dates
+                meteor add accounts-password ⇒ for user and user id functionality
+                meteor add accounts-ui ⇒ to directly use a template with a proper login and registration form
+                meteor add accounts-twitter ⇒ for twitter login option. Requires that you create and app at apps.twitter.com
+
+##How chit-chat works
+_In the client folder:_
+
+###_model_.js
+
+        `Messages = new Mongo.Collection('messages');`
+
+
+###_client_.js
+
+        `if (Meteor.isClient) {    // is this a helper if nested in if statement? Yes
+          Template.messages.helpers({
+            messages: function() {
+            return Messages.find({}, { sort: { time: -1}});
+          }
+        });
+
+          // this function for the input tag and submit button. 
+          Template.input.events = {       //is event handler?
+            'click #submit' : function (event) {  // click on element with ‘submit’ id
+              var name = document.getElementById('name');   //define element with ‘name’ id as name var
+              // var name = 'Anonymous';
+              var message = document.getElementById('message'); //define element with ‘message’ id as var message
+
+          //If the value of the message is not empty then insert the values into DB
+            if (message.value != '') {  // if message value is not empty
+              Messages.insert({  // insert into Message as
+                name: name.value,  // name = value for name
+                message: message.value,  // message = value for message
+                time: Date.now(),  // time = value for time
+            });
+
+            //clears out input fields
+            document.getElementById('message').value = '';  
+            message.value = '';   //define element with ‘message’ id as ‘ ‘
+            document.getElementById('name').value = '';
+            name.value = ''; //define element with ‘name’ id as ‘ ‘
+            }
+          }
+        }
+      }`
+
+###_client_.html
+
+        `<!-- There is no need for HTML tags. Meteor adds them for you.  -->
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title></title>
+        </head>
+
+        <!-- placeholders for the templates with the coordinating names -->
+        <body>  
+          <h1>Chatapp</h1>
+          {{> welcome }}
+          {{> input }}
+          {{> messages }}
+        </body>
+
+        <!-- templates can be saved in html files with the same name as the template tag -->
+        <template name="welcome"> #defining how to display welcome message.
+          <p>
+            Let's chat.
+          </p>
+        </template>
+
+        <template name="messages"> #defining how to display messages
+          {{#each messages}}  #using each loop to apply display format to each message.
+            <strong>{{name}}:</strong> {{message}}<br>
+          {{/each}}
+        </template>
+
+        <template name="input"> #defining how to display input form.
+          <p>Name: <input type="text" id="name"></p>
+          <p>Message: <input type="text" id="message"></p>
+          <button  type="submit" id="submit">Submit</button>
+          <br>
+
+        </template>`
+
+###_client_.css
+
+        `html {
+           padding: 10px;
+           font-family: Verdana, sans-serif;
+        }
+
+        .login-buttons-dropdown-align-right {
+           float: right;
+        }`
+
