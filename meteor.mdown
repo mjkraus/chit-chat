@@ -8,7 +8,7 @@
 ##Some other features:
 * Uses JavaScript for front-end, back-end, and database implementation
 * Has own templating system to display data on the page
-* Uses javascript-based Node.js to create server and networking tools, and handle server-side functionality.
+* Uses javascript-based Node.js to create server and networking tools, and handle server-side functionality
 * Uses MongoDB as database software, which plugs data into json-like collections instead of relational databases. The persistent data
     * can be accessed from both the server and the client, making it easy to write view logic without having to write a lot of server code
     * update themselves automatically, so a view component backed by a collection will automatically display the most up-to-date data
