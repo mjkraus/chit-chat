@@ -94,7 +94,7 @@
 
 ###Run the app
 
-     `meteor`
+    meteor
 
 ###_model_.js
 
