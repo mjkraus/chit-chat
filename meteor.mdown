@@ -2,6 +2,7 @@
 
 #SO WHAT IS IT?
 > _"Meteor is to Javascript as Rails is to Ruby"_
+
 ##Meteor is a Javascript platform.
 ###Like all platforms, Meteor is specially configured with attributes that make it ideal to use under certain conditions. 
 ###Meteor’s special attribute is its built-in reactiveness/live update functionality.
@@ -150,7 +151,7 @@
 
 ![enter name & message](https://cloud.githubusercontent.com/assets/15331966/13205099/70d1c864-d8ad-11e5-8857-159eb4963656.png)
 
-_The JS_
+_JS_
 
     // Event handler for input tag and submit button. 
     Template.input.events = {
@@ -172,7 +173,7 @@ _The JS_
               time: Date.now(),
             });
 
-_The HTML_
+_HTML_
 
     <template name="input">
       <div class="input">
@@ -187,7 +188,7 @@ _The HTML_
 
 ![enter name & message](https://cloud.githubusercontent.com/assets/15331966/13205100/78556802-d8ad-11e5-9f92-300ebdc9f84d.png)
 
-_The JS_
+_JS_
 
     //resets the values in the input fields
             document.getElementById('message').value = '';
@@ -208,7 +209,7 @@ _The JS_
           
             }
 
-_The HTML_
+_HTML_
 
 
     <template name="messages">
@@ -283,7 +284,7 @@ _The HTML_
     }
     }
 
-###Some CSS
+###The CSS
 
     html {
         padding: 10px;
