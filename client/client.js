@@ -23,8 +23,13 @@ if (Meteor.isClient) {
             // the -1 sorts it in desc order
             // changing -1 to 1 reverses the order and you dont have to refresh!
             // meteor is real time by default!
+      
         }
+
+
     });
+
+
 
 
 
@@ -32,7 +37,7 @@ if (Meteor.isClient) {
 Template.input.events = {
 	 
 
-   // jquery equiv of below
+   // jquery equiv of below event handler
    // $('#submit').on('click', function(){
    // var name = $('#name').val();
    // var message = $('#message').val();

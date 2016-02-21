@@ -8,7 +8,7 @@
 
 <!-- placeholders for the templates with the coordinating names -->
 <body>  
-  <h1>Chatapp</h1>
+  <h1>Chit-Chat</h1>
   {{> welcome }}
   {{> input }}
   {{> messages }}
@@ -18,7 +18,7 @@
 <template name="welcome">
   <div class="welcome">
     <p>
-      Let's chat.
+      Let's chit-chat.
     </p>
   </div>
 </template>
@@ -26,7 +26,7 @@
 <template name="messages">
   <div class="data">
     {{#each messages}}
-      <strong>{{name}}:</strong> {{message}}<br>
+      <strong>{{name}}:</strong> {{message}} <br>
     {{/each}}
   </div>
 </template>
