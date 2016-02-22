@@ -185,31 +185,37 @@ _Client.HTML_
 
 ###Clear out fields, print message in real time
 
-![enter name & message](https://cloud.githubusercontent.com/assets/15331966/13205394/12a0fcee-d8b5-11e5-8646-43b96b51d1dd.png)
+![clear field & display messages](https://cloud.githubusercontent.com/assets/15331966/13205394/12a0fcee-d8b5-11e5-8646-43b96b51d1dd.png)
 
 _Client.JS_
 
-    / the function below is for the input tag and submit button. 
-    Template.input.events = {
+    //resets the values in the input fields
+            document.getElementById('message').value = '';
+            message.value = '';
+            document.getElementById('name').value = '';
+            name.value = '';
+          }
+        
+      }
+    }
+    }
+
+     Template.messages.helpers({
+            messages: function() {
+                return Messages.find({}, { sort: { time: -1}});
+                // the -1 sorts it in desc order
+                // changing -1 to 1 reverses the order and you dont have to refresh!
+                // meteor is real time by default!
+          
+            },
+            formattedTime: function() {
+                return moment(this.time).startOf(this.time).fromNow();
+
+            }
+
+
+        });
        
-
-       // jquery equiv of below event handler
-       // $('#submit').on('click', function(){
-       // var name = $('#name').val();
-       // var message = $('#message').val();
-       // })
-       'click #submit' : function (event) {
-          var name = document.getElementById('name');
-          // var name = 'Anonymous';
-          var message = document.getElementById('message');
-
-    //If the value of the message is not empty then insert the values into DB
-          if (message.value != '') {
-            Messages.insert({
-              name: name.value,
-              message: message.value,
-              time: new Date(),
-            });
 
 _Client.HTML_
 
@@ -254,15 +260,8 @@ _Client.HTML_
             },
             formattedTime: function() {
                 return moment(this.time).startOf(this.time).fromNow();
-
             }
-
-
         });
-
-
-
-
 
     // the function below is for the input tag and submit button. 
     Template.input.events = {
@@ -292,7 +291,6 @@ _Client.HTML_
             document.getElementById('name').value = '';
             name.value = '';
           }
-        
       }
     }
     }
