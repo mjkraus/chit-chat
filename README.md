@@ -404,11 +404,16 @@ _Client.HTML_
 
 ## References
 Chit-Chat was created using these tutorials
+
 <https://www.codementor.io/meteor/tutorial/getting-started-with-meteor-build-sample-app>
+
 <http://sebastiandahlgren.se/2013/07/17/tutorial-writing-your-first-metor-application/>
 
 ##Additional Reading
+
 <https://www.meteor.com/>
+
 <https://www.discovermeteor.com/blog/what-goes-where/>
+
 <http://www.sitepoint.com/7-reasons-develop-next-web-app-meteor/>
 
