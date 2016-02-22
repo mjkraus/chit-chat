@@ -365,4 +365,18 @@ _Client.HTML_
       box-shadow: -8px 10px 32px 1px rgba(8,8,8,1);
     }
 
+## References
+Chit-Chat was created using these tutorials
+
+<https://www.codementor.io/meteor/tutorial/getting-started-with-meteor-build-sample-app>
+
+<http://sebastiandahlgren.se/2013/07/17/tutorial-writing-your-first-metor-application/>
+
+##Additional Reading
+
+<https://www.meteor.com/>
+
+<https://www.discovermeteor.com/blog/what-goes-where/>
+
+<http://www.sitepoint.com/7-reasons-develop-next-web-app-meteor/>
 
