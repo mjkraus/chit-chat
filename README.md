@@ -191,8 +191,7 @@ _Client.JS_
 
     // the client and server logic is divided by .isClient and .isServer. It is often organized by 
     // dividing the logic into different folders.
-    // Need to explore the below if statement more to know what it is doing. 
-    // I think it is sorting the messages from the DB based on the timestamp. This is how they are displayed
+    // It is sorting the messages from the DB based on the timestamp. This is how they are displayed
     // in our view
 
     if (Meteor.isClient) {
@@ -218,22 +217,15 @@ _Client.JS_
     });
     }
 
-     Template.messages.helpers({
-            messages: function() {
-                return Messages.find({}, { sort: { time: -1}});
-                // the -1 sorts it in desc order
-                // changing -1 to 1 reverses the order and you dont have to refresh!
-                // meteor is real time by default!
-          
-            },
-            formattedTime: function() {
-                return moment(this.time).startOf(this.time).fromNow();
-
-            }
-
-
-        });
-       
+   //resets the values in the input fields
+            document.getElementById('message').value = '';
+            message.value = '';
+            document.getElementById('name').value = '';
+            name.value = '';
+          }
+      }
+    }
+    }    
 
 _Client.HTML_
 
