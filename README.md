@@ -214,45 +214,8 @@ _Client.JS_
         },
         formattedTime: function() {
             return moment(this.time).startOf(this.time).fromNow();
-
         }
-
-
     });
-
-// the function below is for the input tag and submit button. 
-Template.input.events = {
-   
-
-   // jquery equiv of below event handler
-   // $('#submit').on('click', function(){
-   // var name = $('#name').val();
-   // var message = $('#message').val();
-   // })
-   'click #submit' : function (event) {
-      var name = document.getElementById('name');
-      var message = document.getElementById('message');
-
-//If the value of the message is not empty then insert the values into DB
-      if (message.value != '') {
-        Messages.insert({
-          name: name.value,
-          message: message.value,
-          time: new Date(),
-        });
-
-//resets the values in the input fields
-        document.getElementById('message').value = '';
-        message.value = '';
-        document.getElementById('name').value = '';
-        name.value = '';
-      }
-    
-  }
-}
-}
-
-    }
     }
 
      Template.messages.helpers({
