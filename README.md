@@ -296,13 +296,13 @@ _Client.HTML_
             });
 
     //resets the values in the input fields
-            document.getElementById('message').value = '';
-            message.value = '';
-            document.getElementById('name').value = '';
-            name.value = '';
-          }
+          document.getElementById('message').value = '';
+          message.value = '';
+          document.getElementById('name').value = '';
+          name.value = '';
+        }
       }
-    }
+     }
     }
 
 ###The CSS
