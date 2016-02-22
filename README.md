@@ -195,7 +195,7 @@ _Client.JS_
 // I think it is sorting the messages from the DB based on the timestamp. This is how they are displayed
 // in our view
 
-if (Meteor.isClient) {
+    if (Meteor.isClient) {
 
     // this is a 'local' helper
     // in a global helper, you would not need to name the template
