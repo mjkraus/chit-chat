@@ -190,10 +190,10 @@ _Client.HTML_
 _Client.JS_
 
     // the client and server logic is divided by .isClient and .isServer. It is often organized by 
-// dividing the logic into different folders.
-// Need to explore the below if statement more to know what it is doing. 
-// I think it is sorting the messages from the DB based on the timestamp. This is how they are displayed
-// in our view
+    // dividing the logic into different folders.
+    // Need to explore the below if statement more to know what it is doing. 
+    // I think it is sorting the messages from the DB based on the timestamp. This is how they are displayed
+    // in our view
 
     if (Meteor.isClient) {
 
