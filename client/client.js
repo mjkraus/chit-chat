@@ -33,10 +33,6 @@ if (Meteor.isClient) {
 
     });
 
-
-
-
-
 // the function below is for the input tag and submit button. 
 Template.input.events = {
 	 
@@ -48,7 +44,6 @@ Template.input.events = {
    // })
    'click #submit' : function (event) {
       var name = document.getElementById('name');
-      // var name = 'Anonymous';
       var message = document.getElementById('message');
 
 //If the value of the message is not empty then insert the values into DB
