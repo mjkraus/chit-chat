@@ -189,6 +189,7 @@ _Client.HTML_
 
 _Client.JS_
 
+```
     // the client and server logic is divided by .isClient and .isServer. It is often organized by 
     // dividing the logic into different folders.
     // It is sorting the messages from the DB based on the timestamp. This is how they are displayed
@@ -217,7 +218,7 @@ _Client.JS_
     });
     }
 
-   `//resets the values in the input fields
+   //resets the values in the input fields
             document.getElementById('message').value = '';
             message.value = '';
             document.getElementById('name').value = '';
@@ -225,7 +226,8 @@ _Client.JS_
           }
       }
     }
-  }`   
+  }    
+```
 
 _Client.HTML_
 
