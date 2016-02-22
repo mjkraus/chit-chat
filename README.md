@@ -295,7 +295,7 @@ _Client.HTML_
               time: new Date(),
             });
 
-    //resets the values in the input fields
+    `//resets the values in the input fields
           document.getElementById('message').value = '';
           message.value = '';
           document.getElementById('name').value = '';
@@ -303,7 +303,7 @@ _Client.HTML_
         }
       }
      }
-    }
+    }`
 
 ###The CSS
 
