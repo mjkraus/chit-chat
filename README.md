@@ -185,7 +185,7 @@ _Client.HTML_
 
 ###Clear out fields, print message in real time
 
-![clear field & display messages](https://cloud.githubusercontent.com/assets/15331966/13205394/12a0fcee-d8b5-11e5-8646-43b96b51d1dd.png)
+![clear field & display messages](https://cloud.githubusercontent.com/assets/13909951/13224283/c8f7f34e-d955-11e5-993e-c35efd7c0ae9.png)
 
 _Client.JS_
 
