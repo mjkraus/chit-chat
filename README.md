@@ -185,7 +185,7 @@ _Client.HTML_
 
 ###Clear out fields, print message in real time
 
-![enter name & message](https://cloud.githubusercontent.com/assets/15331966/13205394/12a0fcee-d8b5-11e5-8646-43b96b51d1dd.png)
+![clear field & display messages](https://cloud.githubusercontent.com/assets/15331966/13205394/12a0fcee-d8b5-11e5-8646-43b96b51d1dd.png)
 
 _Client.JS_
 
@@ -252,6 +252,25 @@ Template.input.events = {
 }
 }
 
+    }
+    }
+
+     Template.messages.helpers({
+            messages: function() {
+                return Messages.find({}, { sort: { time: -1}});
+                // the -1 sorts it in desc order
+                // changing -1 to 1 reverses the order and you dont have to refresh!
+                // meteor is real time by default!
+          
+            },
+            formattedTime: function() {
+                return moment(this.time).startOf(this.time).fromNow();
+
+            }
+
+
+        });
+       
 
 _Client.HTML_
 
@@ -273,10 +292,12 @@ _Client.HTML_
 
     // the client and server logic is divided by .isClient and .isServer. It is often organized by 
     // dividing the logic into different folders.
-    // It is sorting the messages from the DB based on the timestamp. This is how they are displayed
+    // Need to explore the below if statement more to know what it is doing. 
+    // I think it is sorting the messages from the DB based on the timestamp. This is how they are displayed
     // in our view
 
     if (Meteor.isClient) {
+
         // this is a 'local' helper
         // in a global helper, you would not need to name the template, i guess
         // rails equiv of below:
@@ -291,14 +312,17 @@ _Client.HTML_
                 // changing -1 to 1 reverses the order and you dont have to refresh!
                 // meteor is real time by default!
           
+            },
+            formattedTime: function() {
+                return moment(this.time).startOf(this.time).fromNow();
             }
-
-
         });
 
-    // Event handler for input tag and submit button. 
+    // the function below is for the input tag and submit button. 
     Template.input.events = {
-       // jquery equiv:
+       
+
+       // jquery equiv of below event handler
        // $('#submit').on('click', function(){
        // var name = $('#name').val();
        // var message = $('#message').val();
@@ -313,7 +337,7 @@ _Client.HTML_
             Messages.insert({
               name: name.value,
               message: message.value,
-              time: Date.now(),
+              time: new Date(),
             });
 
     //resets the values in the input fields
@@ -322,7 +346,6 @@ _Client.HTML_
             document.getElementById('name').value = '';
             name.value = '';
           }
-        
       }
     }
     }
